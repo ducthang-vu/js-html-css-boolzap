@@ -89,6 +89,7 @@ $(document).ready(function () {
     // chat_input alwasy keeps focus, unless input is empty
     chat_input.blur(forceFocus_on_ChatInput)
 
+    
     chat_input.focus(enabling_chatBtn)
 
     chat_input.blur(function() {
