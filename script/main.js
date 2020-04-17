@@ -76,13 +76,22 @@ $(document).ready(function () {
     // chat_input alwasy keeps focus, unless input is empty
     chat_input.blur(forceFocus_on_ChatInput)
 
+    chat_input.focus(function() {
+        chat_btn.children('i').removeClass('fa-microphone').addClass('fa-paper-plane')
+        chat_btn.click(() => {
+            mess_send_by_User()
+        })    
+    })
+
+    chat_input.blur(function() {
+        chat_btn.children('i').removeClass('fa-paper-plane').addClass('fa-microphone')
+        chat_btn.unbind()
+    })
+
 
     $(document).keyup((function (e) { 
         if (e.which == 13 || e.keyCode == 13) mess_send_by_User()
         }
     )) 
     
-    chat_btn.click(() => {
-        mess_send_by_User()
-    })    
 });
