@@ -46,7 +46,6 @@ $(document).ready(function () {
 
 
     function forceFocus_on_ChatInput() {
-        //Accepts a $(selector) and give it focus
         if (chat_input.val().trim()) {
             setTimeout(() => chat_input.focus(), 100)
         }
