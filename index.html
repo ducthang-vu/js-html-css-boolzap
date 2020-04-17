@@ -23,29 +23,80 @@
                     <i class="fas fa-comment-alt"></i>
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
-                
             </header>
 
             <div class="notification flex">
                 <div>
-                    <i>someIcone</i>
+                    <i class="fas fa-bell-slash"></i>
                 </div>
 
                 <div>
                     <p>Ricevi notifiche di messaggi</p>
                     <p>Attiva notifiche desktop</p>
                 </div>
-                
             </div>
 
             <div class="input-wrapper">
+                <div class="row">
+                    <i class="fas fa-search"></i>
                 <input id="sidebar-input" type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
             </div>
 
             <ul class="contact-list">
-                <li>    tizio 1    </li>
-                <li>    tizio 2    </li>
-                <li>    tizio 3    </li>
+                <li>
+                    <button class="contact-button">
+                        <div class="left-btn">
+                            <div class="avatar-box">
+                            </div>
+            
+                            <hgroup class="content-title"> 
+                                <h1>Michele</h1>
+                                <p>Ultimo accesso oggi alle 15.40</p>
+                            </hgroup> 
+                        </div>
+
+                        <div class="right-btn">
+                            17.53
+                        </div>
+                    </button>
+                </li>
+                
+                <li>
+                    <button class="contact-button">
+                        <div class="left-btn">
+                            <div class="avatar-box">
+                            </div>
+            
+                            <hgroup class="content-title"> 
+                                <h1>Michele</h1>
+                                <p>Ultimo accesso oggi alle 15.40</p>
+                            </hgroup> 
+                        </div>
+                        
+                        <div class="right-btn">
+                            17.53
+                        </div>
+                    </button>
+                </li>
+
+                <li>
+                    <button class="contact-button">
+                        <div class="left-btn">
+                            <div class="avatar-box">
+                            </div>
+            
+                            <hgroup class="content-title"> 
+                                <h1>Michele</h1>
+                                <p>Ultimo accesso oggi alle 15.40</p>
+                            </hgroup> 
+                        </div>
+                        
+                        <div class="right-btn">
+                            17.53
+                        </div>
+                    </button>
+                </li>
             </ul>
         </section>
 
@@ -54,9 +105,8 @@
             <header class="header content-header flex">
                 <div class="left-header flex">
                     <div class="avatar-box">
-
                     </div>
-                   
+    
                     <hgroup class="content-title"> 
                         <h1>Michele</h1>
                         <p>Ultimo accesso oggi alle 15.40</p>
@@ -74,8 +124,10 @@
                 hi!
             </div>
 
-            <div class="chat-menu">
+            <div class="chat-menu flex">
+                <button id="emoticon-btn"><i class="far fa-smile"></i></button>
                 <input id="chat-input" type="text" placeholder="Scrivi un messaggio">
+                <button id="chat-btn"><i class="fas fa-microphone"></i></button>
             </div>
         </section>
 
