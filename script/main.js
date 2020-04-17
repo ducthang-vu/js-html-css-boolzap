@@ -39,13 +39,9 @@ $(document).ready(function () {
     }
 
 
-    function switch_chatBtn() {
-        chat_btn.children('i').toggleClass('fa-microphone fa-paper-plane')
-    }
-    
-
-    function disabling_chatBtn() {
-        if (chat_input.val().trim() == '') switch_chatBtn()
+    function forceFocus_on_ChatInput() {
+        //Accepts a $(selector) and give it focus
+        if (chat_input.val().trim()) setTimeout(chat_input.focus(), 100)
     }
 
 
@@ -68,15 +64,17 @@ $(document).ready(function () {
     const template_mes = $('.template.message .mess-row')
 
     var bot_timerId
+    var chat_btn_isActive = false
 
 
+    // Loading previous messages
+    // ToDO: MAKE FUNCTION: This sould be activated every time a user switch chat to another contact
     for (item of michele_history) {
         send_Message(item[0], item[1])
     }
 
-    chat_input.focus(switch_chatBtn)
-    chat_input.focusout(disabling_chatBtn)
-    
+    // chat_input alwasy keeps focus, unless input is empty
+    chat_input.blur(forceFocus_on_ChatInput)
 
 
     $(document).keyup((function (e) { 
