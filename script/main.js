@@ -13,7 +13,7 @@ $(document).ready(function () {
         bot ? mess.addClass('bot') : mess.addClass('user')
 
         mess.find('.mess-content').text(text)
-        mess.find('.mess-time').text('prova')
+        mess.find('.mess-time').text('someTime')
         mess.appendTo(chat_history)
         chat_history.scrollTop(chat_history.height()) 
     }   
