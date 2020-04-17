@@ -26,6 +26,10 @@ li {
     width: 100%;
 }
 
+.block {
+    display: block;
+}
+
 
 /* APP */
 .app {
@@ -35,9 +39,18 @@ li {
     background: #fff;
 }
 
-.block {
-    display: block;
+
+.avatar-box {
+    background: orange; /* WARNING */
+    border-radius: 50%;
+    overflow: hidden;
 }
+
+    .avatar-box img {
+        height: 100%;
+        width: 100%;
+    }
+
 
 .header {
     height: 50px;
@@ -46,15 +59,14 @@ li {
 }
 
     .left-header .avatar-box{
-        background: orange; /* WARNING */
         width: 35px;
         height: 35px;
-        border-radius: 50%;
     }
 
     .right-header > * {
         padding: 5px;
     }
+
 
 
 /*SIDEBAR */
@@ -68,6 +80,14 @@ li {
         padding: 10px;
         background: #8EDAFD;
     }
+
+        .notification .avatar-box {
+            width: 35px;
+            height: 35px;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+        }
 
     .input-wrapper {
         padding: 5px;
@@ -84,15 +104,31 @@ li {
     }
 
         .contact-button {
+            height: 50px;
             justify-content: space-between;
+            align-items: center;
         }
+
+            .left-btn .avatar-box{
+                height: 35px;
+                width: 35px;
+            }
+
+            .left-btn .content-title {
+                text-align: left;
+            }
+
+            .right-btn{
+                padding-bottom: 12px;
+                font-size: 80%;
+            }
 
 
 /*CONTENT */
 .content {
     width: 65%;
     height: 100%;
-    background: #aaa;
+    background: lightgrey;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -116,17 +152,29 @@ li {
 
     .chat-menu {
         height: 50px;
-        padding: 10px;
         justify-content: space-between;
+        align-items: center;
     }
 
         .chat-menu button {
+            margin: 0 35px;
             height: 30px;
             width: 30px;
+            background: inherit;
+            border: 0;
+            font-size: 120%;
+            color: darkgrey;
         }
 
         #chat-input {
-            margin: 0 15px;
+            height: 75%;
             padding: 5px 15px;
             flex-grow: 1;
+            border-radius: 7px;
+            border: 2px solid transparent;
+        }
+
+        #chat-input:focus {
+            outline: none;
+            border: 2px solid lightblue;
         }
