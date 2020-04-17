@@ -44,15 +44,15 @@ $(document).ready(function () {
     
     function enabling_chatBtn() {
         chat_btn.children('i').removeClass('fa-microphone').addClass('fa-paper-plane')
-        chat_btn.click(() => {mess_send_by_User()})
+        chat_btn.click(mess_send_by_User)
+        console.log('enbaling called')
     }
 
 
     function forceFocus_on_ChatInput() {
         //Accepts a $(selector) and give it focus
         if (chat_input.val().trim()) {
-            setTimeout(chat_input.focus(), 100)
-            enabling_chatBtn()
+            setTimeout(() => chat_input.focus(), 100)
         }
     }
 
@@ -78,7 +78,6 @@ $(document).ready(function () {
     const template_mes = $('.template.message .mess-row')
 
     var bot_timerId
-    var chat_btn_isActive = false
 
 
     // Loading previous messages
