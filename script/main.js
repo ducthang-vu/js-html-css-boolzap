@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     function send_Message(text, bot=false) {
         var mess = template_mes.clone()
-        
+
         bot ? mess.addClass('bot') : mess.addClass('user')
 
         mess.find('.mess-content').text(text)
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 
     function mess_by_bot() {
-        var content = bot_messages[Math.random() * 3 | 0]
+        var content = bot_messages[Math.random() * bot_messages.length | 0]
         bot_timerId = setTimeout(() => send_Message(content, true), 2000)
     }
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
     /* SCRIPT
     /***********/
 
-    const bot_messages = ['Ehi!', 'Come va?', 'Andiamo a bere?', 'Come stai?']
+    const bot_messages = ['Ehi!', 'Come va?', 'Andiamo a bere?', 'Come stai?', 'Da quanto tempo!']
 
     const michele_history = [
         ['Ciao, come stai?', false],
