@@ -28,6 +28,17 @@ body {
     padding: 10px;
 }
 
+    .left-header .avatar-box{
+        background: orange; /* WARNING */
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+
+    .right-header > * {
+        padding: 5px;
+    }
+
 
 /*SIDEBAR */
 .sidebar {
@@ -50,6 +61,20 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+
+    .content-title {
+        margin-left: 20px;
+    }
+
+        .content-title h1 {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .content-title p {
+            font-size: 12px;
+            margin: 0;
+        }
 
     .content-history {
         flex-grow: 1;
