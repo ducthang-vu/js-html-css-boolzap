@@ -53,12 +53,11 @@ $(document).ready(function () {
 
 
 
-
     /***********/
     /* SCRIPT
     /***********/
 
-    const bot_messages = ['Ehi!', 'Come va?', 'Andiamo a bere?', 'Come stai?', 'Da quanto tempo!']
+    const bot_messages = ['Ehi!', 'Come va?', 'Andiamo a bere?', 'Come stai?', 'Da quanto tempo!', 'Com\'è il tempo?', 'Hai visto la partita?', 'Hai sentito Caio?']
 
     const michele_history = [
         ['Ciao, come stai?', false],
