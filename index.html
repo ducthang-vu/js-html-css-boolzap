@@ -4,26 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js-html-css-boolzap</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="flex">
 
-    <section class="app">
+    <main class="app flex">
 
-        <div class="sidebar">
-
-        </div>
+        <section class="sidebar">
+            <header class="header sidebar-header flex">
+                header content
+            </header>
+            <div class="notification">
+                notification
+            </div>
+            <div class="input-wrapper">
+                <input id="sidebar-input" type="text" placeholder="Cerca o inizia una nuova chat">
+            </div>
+            <ul class="contact-list">
+                <li>    tizio 1    </li>
+                <li>    tizio 2    </li>
+                <li>    tizio 3    </li>
+            </ul>
+        </section>
 
         
-        <div class="content">
+        <section class="content">
+            <header class="header content-header flex">
+                header content
+            </header>
+            <div class="content-history">
+                hi!
+            </div>
+            <div class="chat-menu">
+                <input id="chat-input" type="text" placeholder="Scrivi un messaggio">
+            </div>
+        </section>
 
-        </div>
-
-    </section>
+    </main>
 
 
     <!-- SCRITPS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="main.js"></script>
+    <script src="script/main.js"></script>
 </body>
 </html>

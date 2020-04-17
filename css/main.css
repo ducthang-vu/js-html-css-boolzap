@@ -22,12 +22,20 @@ body {
     background: #fff;
 }
 
-.side {
+.header {
+    height: 70px;
+}
+
+
+/*SIDEBAR */
+.sidebar {
     width: 35%;
     height: 100%;
     background: #ccc;
 }
 
+
+/*CONTENT */
 .content {
     width: 65%;
     height: 100%;
