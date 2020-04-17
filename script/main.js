@@ -31,17 +31,25 @@ $(document).ready(function () {
 
     function mess_send_by_User() {
         var new_content = chat_input.val().trim()
-        if (new_content) send_Message(new_content)
+        if (new_content) {
+            send_Message(new_content)
+            clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
+            mess_by_bot()
+        }
+        
         chat_input.val('') 
         chat_input.blur()
-        clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
-        mess_by_bot()
     }
 
 
     function forceFocus_on_ChatInput() {
         //Accepts a $(selector) and give it focus
         if (chat_input.val().trim()) setTimeout(chat_input.focus(), 100)
+    }
+
+
+    function enabling_chatBtn() {
+
     }
 
 
