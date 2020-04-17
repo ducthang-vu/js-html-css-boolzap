@@ -36,21 +36,27 @@ $(document).ready(function () {
             clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
             mess_by_bot()
         }
-        
+
         chat_input.val('') 
         chat_input.blur()
+    }
+
+    
+    function enabling_chatBtn() {
+        chat_btn.children('i').removeClass('fa-microphone').addClass('fa-paper-plane')
+        chat_btn.click(() => {mess_send_by_User()})
     }
 
 
     function forceFocus_on_ChatInput() {
         //Accepts a $(selector) and give it focus
-        if (chat_input.val().trim()) setTimeout(chat_input.focus(), 100)
+        if (chat_input.val().trim()) {
+            setTimeout(chat_input.focus(), 100)
+            enabling_chatBtn()
+        }
     }
 
 
-    function enabling_chatBtn() {
-
-    }
 
 
     /***********/
@@ -84,12 +90,7 @@ $(document).ready(function () {
     // chat_input alwasy keeps focus, unless input is empty
     chat_input.blur(forceFocus_on_ChatInput)
 
-    chat_input.focus(function() {
-        chat_btn.children('i').removeClass('fa-microphone').addClass('fa-paper-plane')
-        chat_btn.click(() => {
-            mess_send_by_User()
-        })    
-    })
+    chat_input.focus(enabling_chatBtn)
 
     chat_input.blur(function() {
         chat_btn.children('i').removeClass('fa-paper-plane').addClass('fa-microphone')
