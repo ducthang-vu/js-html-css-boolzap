@@ -3,9 +3,9 @@ $(document).ready(function () {
     console.log($)
 
 
-    /***********/
-    /* FUNCTION
-    /***********/
+    /************/
+    /* FUNCTIONS
+    /************/
 
     function send_Message(text, bot=false) {
         var mess = template_mes.clone()
@@ -34,18 +34,20 @@ $(document).ready(function () {
         if (new_content) send_Message(new_content)
         chat_input.val('') 
         chat_input.blur()
-        clearTimeout(bot_timerId)
+        clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
         mess_by_bot()
     }
-
-
-
 
 
     function switch_chatBtn() {
         chat_btn.children('i').toggleClass('fa-microphone fa-paper-plane')
     }
     
+
+    function disabling_chatBtn() {
+        if (chat_input.val().trim() == '') switch_chatBtn()
+    }
+
 
     /***********/
     /* SCRIPT
@@ -73,7 +75,8 @@ $(document).ready(function () {
     }
 
     chat_input.focus(switch_chatBtn)
-    chat_input.focusout(switch_chatBtn)
+    chat_input.focusout(disabling_chatBtn)
+    
 
 
     $(document).keyup((function (e) { 
