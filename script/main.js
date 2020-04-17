@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     function forceFocus_on_ChatInput() {
         if (chat_input.val().trim()) {
-            setTimeout(() => chat_input.focus(), 100)
+            setTimeout(() => chat_input.focus(), 10)
         }
     }
 
@@ -87,7 +87,7 @@ $(document).ready(function () {
 
     chat_input.focus(enabling_chatBtn)
 
-    chat_input.blur(function() {
+    chat_input.blur(() => {
         chat_btn.children('i').removeClass('fa-paper-plane').addClass('fa-microphone')
         chat_btn.unbind()
     })
