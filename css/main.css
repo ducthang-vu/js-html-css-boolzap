@@ -40,7 +40,6 @@ li {
     width: 80%;
     min-width: 900px;
     height: 95%;
-    background: #fff;
 }
 
 
@@ -54,12 +53,12 @@ li {
         width: 100%;
     }
 
-
 .header {
     height: 60px;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    background: #eaeaea
 }
 
     .left-header .avatar-box{
@@ -69,15 +68,15 @@ li {
 
     .right-header > * {
         padding: 5px;
+        color:  #b1b1b1;
     }
-
 
 
 /*SIDEBAR */
 .sidebar {
     width: 35%;
     height: 100%;
-    background: #ccc;
+    background: #fff;
 }
 
     .notification {
@@ -134,7 +133,7 @@ li {
         }
 
         .contact-button.active {
-            background: gray;
+            background: #eaebeb;
         }
 
             .left-btn .avatar-box{
@@ -160,18 +159,21 @@ li {
     flex-direction: column;
     justify-content: space-between;
 }
+    .content .header {
+        border-left: 0.5px solid lightgray;
+    } 
 
-    .content-title {
-        margin-left: 20px;
-    }
-
-        .content-title h1 {
-            font-size: 16px;
+        .content-title {
+            margin-left: 20px;
         }
 
-        .content-title p {
-            font-size: 12px;
-        }
+            .content-title h1 {
+                font-size: 16px;
+            }
+
+            .content-title p {
+                font-size: 12px;
+            }
 
     .content-history {
         flex-grow: 1;
