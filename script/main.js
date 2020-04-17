@@ -41,7 +41,6 @@ $(document).ready(function () {
     function enabling_chatBtn() {
         chat_btn.children('i').removeClass('fa-microphone').addClass('fa-paper-plane')
         chat_btn.click(mess_send_by_User)
-        console.log('enbaling called')
     }
 
 
