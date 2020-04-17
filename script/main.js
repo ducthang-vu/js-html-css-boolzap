@@ -9,12 +9,8 @@ $(document).ready(function () {
 
     function send_Message(text, bot=false) {
         var mess = template_mes.clone()
-        if (bot) {
-            mess.addClass('bot')
-        }
-        else {
-            mess.addClass('user')
-        }
+        
+        bot ? mess.addClass('bot') : mess.addClass('user')
 
         mess.find('.mess-content').text(text)
         mess.find('.mess-time').text('prova')
@@ -89,7 +85,7 @@ $(document).ready(function () {
     // chat_input alwasy keeps focus, unless input is empty
     chat_input.blur(forceFocus_on_ChatInput)
 
-    
+
     chat_input.focus(enabling_chatBtn)
 
     chat_input.blur(function() {
