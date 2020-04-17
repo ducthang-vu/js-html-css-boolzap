@@ -22,6 +22,10 @@ li {
     display: flex;
 }
 
+.w-100 {
+    width: 100%;
+}
+
 
 /* APP */
 .app {
@@ -71,6 +75,7 @@ li {
     }
 
         .input-wrapper .row {
+            align-items: center;
             background: #fff;
         }
 
@@ -79,7 +84,7 @@ li {
     }
 
         .contact-button {
-            width: 100%;
+            justify-content: space-between;
         }
 
 
