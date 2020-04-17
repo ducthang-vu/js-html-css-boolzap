@@ -15,7 +15,7 @@ $(document).ready(function () {
         mess.find('.mess-content').text(text)
         mess.find('.mess-time').text('someTime')
         mess.appendTo(chat_history)
-        chat_history.scrollTop(chat_history.height()) 
+        chat_history.scrollTop(chat_history.innerHeight()) 
     }   
 
 

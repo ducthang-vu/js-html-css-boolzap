@@ -223,9 +223,9 @@ li {
             }
 
     #content-history {
-        overflow-y: auto;
-        padding: 0 50px;
+        padding: 0 50px 10px 50px;
         flex-grow: 1;
+        overflow-y: auto;
         background-image: url(../img/mine.jpg);
     }
 
