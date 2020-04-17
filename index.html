@@ -12,14 +12,34 @@
 
         <section class="sidebar">
             <header class="header sidebar-header flex">
-                header content
+                <div class="left-header">
+                    header- left
+                </div>
+                
+                <div class="right-header">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+                
             </header>
-            <div class="notification">
-                notification
+
+            <div class="notification flex">
+                <div>
+                    <i>someIcone</i>
+                </div>
+
+                <div>
+                    <p>Ricevi notifiche di messaggi</p>
+                    <p>Attiva notifiche desktop</p>
+                </div>
+                
             </div>
+
             <div class="input-wrapper">
                 <input id="sidebar-input" type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
+
             <ul class="contact-list">
                 <li>    tizio 1    </li>
                 <li>    tizio 2    </li>
@@ -28,13 +48,30 @@
         </section>
 
         
-        <section class="content">
+        <section class="content flex">
             <header class="header content-header flex">
-                header content
+                <div class="left-header flex">
+                    <div>
+                        avatar
+                    </div>
+                   
+                    <hgroup> 
+                        <h1>Michele</h1>
+                        <p>Ultimo accesso oggi alle 15.40</p>
+                    </hgroup> 
+                </div>
+                
+                <div class="right-header">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
             </header>
+
             <div class="content-history">
                 hi!
             </div>
+
             <div class="chat-menu">
                 <input id="chat-input" type="text" placeholder="Scrivi un messaggio">
             </div>
@@ -45,6 +82,7 @@
 
     <!-- SCRITPS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/89ef06fff6.js" crossorigin="anonymous"></script> 
     <script src="script/main.js"></script>
 </body>
 </html>
