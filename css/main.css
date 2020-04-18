@@ -244,8 +244,10 @@ li {
             .mess-container {
                 display: inline-block;
                 min-width: 180px;
+                max-width: 520px;
                 padding: 10px;
                 border-radius: 10px;
+                word-break: break-all;
             }
 
             .mess-row.user .mess-container {
