@@ -7,28 +7,34 @@ $(document).ready(function () {
     /* FUNCTIONS
     /************/
 
-    function send_Message(text, bot=false) {
+    function print_Message(text, time, bot=false) {
         var mess = template_mes.clone()
 
         bot ? mess.addClass('bot') : mess.addClass('user')
 
         mess.find('.mess-content').text(text)
-        mess.find('.mess-time').text('someTime')
+        mess.find('.mess-time').text(time)
         mess.appendTo(chat_history)
         chat_history.scrollTop(chat_history.innerHeight()) 
     }   
 
 
+    function getMinutes_Seconds() {
+        now = new Date()
+        return (now.getHours() + '.' + now.getMinutes()).replace(/\b([\d])\b/, '0$&')
+    }
+
+
     function mess_by_bot() {
         var content = bot_messages[Math.random() * bot_messages.length | 0]
-        bot_timerId = setTimeout(() => send_Message(content, true), 2000)
+        bot_timerId = setTimeout(() => print_Message(content, getMinutes_Seconds(), true), 2000)
     }
 
 
     function mess_send_by_User() {
         var new_content = chat_input.val().trim()
         if (new_content) {
-            send_Message(new_content)
+            print_Message(new_content, getMinutes_Seconds())
             clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
             mess_by_bot()
         }
@@ -59,9 +65,9 @@ $(document).ready(function () {
     const bot_messages = ['Ehi!', 'Come va?', 'Andiamo a bere?', 'Come stai?', 'Da quanto tempo!', 'Com\'è il tempo?', 'Hai visto la partita?', 'Hai sentito Caio?']
 
     const michele_history = [
-        ['Ciao, come stai?', false],
-        ['Ciao, come stai?', true],
-        ['Ciao, come stai?', false],
+        ['Ciao, come stai?', '06.20', false],
+        ['Ciao, come stai?', '14.21', true],
+        ['Ciao, come stai?', '21.41', false],
     ]
 
     const chat_btn = $('#chat-btn')
@@ -76,7 +82,7 @@ $(document).ready(function () {
     // Loading previous messages
     // ToDO: MAKE FUNCTION: This sould be activated every time a user switch chat to another contact
     for (item of michele_history) {
-        send_Message(item[0], item[1])
+        print_Message(item[0], item[1], item[2])
     }
 
     // chat_input alwasy keeps focus, unless input is empty
@@ -97,3 +103,5 @@ $(document).ready(function () {
     )) 
     
 });
+
+
