@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 
     // Loading previous messages
-    // ToDO: MAKE FUNCTION: This sould be activated every time a user switch chat to another contact
+    // ToDO: MAKE FUNCTION: This should be activated every time a user switch chat to another contact
     for (item of michele_history) {
         print_Message(item[0], item[1], item[2])
     }
