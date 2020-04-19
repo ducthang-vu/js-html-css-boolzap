@@ -19,10 +19,13 @@ body {
 }
 
 button {
+    background: inherit;
     font-size: inherit;
     font-family: inherit;
+    outline: none;
+    border: 0;
+    cursor: pointer;
 }
-
 
 li {
     list-style: none;
@@ -86,11 +89,17 @@ li {
     .left-header .avatar-box{
         width: 35px;
         height: 35px;
+        align-items: center;
     }
 
     .right-header > * {
+        width: 30px;
         padding: 5px;
         color:  #b1b1b1;
+    }
+
+    .right-header button:hover {
+        color: lightgray;
     }
 
 
@@ -165,9 +174,6 @@ li {
             padding: 10px;
             justify-content: space-between;
             align-items: center;
-            background: inherit;
-            border: 0;
-            outline: none;
             font-size: 60%;
         }
 
@@ -274,10 +280,12 @@ li {
             margin: 0 20px;
             height: 30px;
             width: 30px;
-            background: inherit;
-            border: 0;
             font-size: 120%;
             color: #6d7376;
+        }
+
+        .chat-menu button:hover {
+            color: #fff;
         }
 
         #chat-input {
