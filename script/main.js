@@ -52,10 +52,7 @@ $(document).ready(function () {
 
     function forceFocus_on_ChatInput() {
         if (chat_input.val().trim()) {
-            setTimeout(() => {
-                if (!search_input.is(':focus')) chat_input.focus()  
-            },
-            50)           
+            setTimeout(() => {if (!search_input.is(':focus')) chat_input.focus()}, 50)           
         }
     }
 
