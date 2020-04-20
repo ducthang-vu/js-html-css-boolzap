@@ -59,19 +59,17 @@ $(document).ready(function () {
 
 
     function activate_searchInput() {
-        setTimeout(() => {
-            contact_list.children().removeClass('no-display')
-            var string = search_input.val().trim().toLocaleLowerCase()
-            console.log(string)
+        contact_list.children().removeClass('no-display')
+        var string = search_input.val().trim().toLocaleLowerCase()
+        console.log(string)
 
-            if (string) {
-                var control = contacts.map(x => {
-                    return x.toLocaleLowerCase().includes(string) ? -1 : contacts.indexOf(x)
-                }).filter(x => x != -1)
-            
-                for (item of control) contact_list.children('[data-idContact="' + item + '"]').addClass('no-display')
-            } 
-        }, 10)
+        if (string) {
+            var control = contacts.map(x => {
+                return x.toLocaleLowerCase().includes(string) ? -1 : contacts.indexOf(x)
+            }).filter(x => x != -1)
+        
+            for (item of control) contact_list.children('[data-idContact="' + item + '"]').addClass('no-display')
+        } 
     }
 
     /***********/
