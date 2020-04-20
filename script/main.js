@@ -10,7 +10,7 @@ $(document).ready(function () {
     function print_Message(text, time, bot=false) {
         var mess = template_mes.clone()
 
-        bot ? mess.addClass('bot') : mess.addClass('user')
+        bot ? mess.addClass('received') : mess.addClass('user')
 
         mess.find('.mess-content').text(text)
         mess.find('.mess-time').text(time)
@@ -52,10 +52,12 @@ $(document).ready(function () {
 
     function forceFocus_on_ChatInput() {
         if (chat_input.val().trim()) {
-            setTimeout(() => chat_input.focus(), 10)
+            setTimeout(() => {
+                if (!search_input.is(':focus')) chat_input.focus()  
+            },
+            50)           
         }
     }
-
 
 
     /***********/
@@ -73,6 +75,7 @@ $(document).ready(function () {
     const chat_btn = $('#chat-btn')
     const chat_history = $('#content-history')
     const chat_input = $('#chat-input')
+    const search_input = $('#sidebar-input')
 
     const template_mes = $('.template.message .mess-row')
 

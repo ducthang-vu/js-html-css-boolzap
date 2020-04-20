@@ -215,6 +215,7 @@ li {
 }
     .content .header {
         border-left: 0.5px solid lightgray;
+        flex-shrink: 0;
     } 
 
         .content-title {
@@ -244,7 +245,7 @@ li {
             text-align: right;
         } 
 
-        .mess-row.bot {
+        .mess-row.received {
             text-align: left;
         } 
 
@@ -261,7 +262,7 @@ li {
                 background: lightgreen;
             }
 
-            .mess-row.bot .mess-container {
+            .mess-row.received .mess-container {
                 background: #fff;
             }
 
