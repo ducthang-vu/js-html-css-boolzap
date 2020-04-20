@@ -59,16 +59,13 @@ $(document).ready(function () {
 
 
     function activate_searchInput() {
-        contact_list.children().removeClass('no-display')
-        var string = search_input.val().trim().toLocaleLowerCase()
+        contact_list.children().show()
 
-        if (string) {
-            var control = contacts.map(x => {
-                return x.toLocaleLowerCase().includes(string) ? -1 : contacts.indexOf(x)
-            }).filter(x => x != -1)
-        
-            for (item of control) contact_list.children('[data-idContact="' + item + '"]').addClass('no-display')
-        } 
+        for (contact of contacts) {
+            if (!contact.toLocaleLowerCase().includes(search_input.val().trim().toLocaleLowerCase())) {
+                contact_list.children('[data-idContact="' + contacts.indexOf(contact) + '"]').hide()
+            }
+        }
     }
 
     /***********/
