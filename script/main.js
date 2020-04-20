@@ -61,9 +61,9 @@ $(document).ready(function () {
     function activate_searchInput() {
         contact_list.children().show()
 
-        for (contact of contacts) {
+        for ([index, contact] of contacts.entries()) {
             if (!contact.toLocaleLowerCase().includes(search_input.val().trim().toLocaleLowerCase())) {
-                contact_list.children('[data-idContact="' + contacts.indexOf(contact) + '"]').hide()
+                contact_list.children('[data-idContact="' + index + '"]').hide()
             }
         }
     }
