@@ -61,7 +61,6 @@ $(document).ready(function () {
     function activate_searchInput() {
         contact_list.children().removeClass('no-display')
         var string = search_input.val().trim().toLocaleLowerCase()
-        console.log(string)
 
         if (string) {
             var control = contacts.map(x => {
