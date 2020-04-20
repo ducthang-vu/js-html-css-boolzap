@@ -3,7 +3,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -27,11 +26,19 @@ button {
     cursor: pointer;
 }
 
+label {
+    cursor: pointer;
+}
+
 li {
     list-style: none;
 }
 
 /* UTILITIES */
+.no-display {
+    display: none;
+}
+
 .flex {
     display: flex;
 }

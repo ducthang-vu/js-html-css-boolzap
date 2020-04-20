@@ -27,7 +27,8 @@ $(document).ready(function () {
 
     function mess_by_bot() {
         var content = bot_messages[Math.random() * bot_messages.length | 0]
-        bot_timerId = setTimeout(() => print_Message(content, getMinutes_Seconds(), true), 2000)
+        //bot_timerId = setTimeout(() => print_Message(content, getMinutes_Seconds(), true), 2000)
+        setTimeout(() => print_Message(content, getMinutes_Seconds(), true), 1000)
     }
 
 
@@ -35,7 +36,7 @@ $(document).ready(function () {
         var new_content = chat_input.val().trim()
         if (new_content) {
             print_Message(new_content, getMinutes_Seconds())
-            clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
+            //clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
             mess_by_bot()
         }
 
@@ -52,7 +53,7 @@ $(document).ready(function () {
 
     function forceFocus_on_ChatInput() {
         if (chat_input.val().trim()) {
-            setTimeout(() => {if (!search_input.is(':focus')) chat_input.focus()}, 50)           
+            setTimeout(() => {if (!search_input.is(':focus')) chat_input.focus()}, 5)           
         }
     }
 
@@ -62,6 +63,8 @@ $(document).ready(function () {
     /***********/
 
     const bot_messages = ['Ehi!', 'Come va?', 'Andiamo a bere?', 'Come stai?', 'Da quanto tempo!', 'Com\'è il tempo?', 'Hai visto la partita?', 'Hai sentito Caio?']
+
+    const contacts = ['Michele', 'Fabio', 'Samuele', 'Alessandro B.', 'Alessandro L.', 'Claudia', 'Davide', 'Federico']
 
     const michele_history = [
         ['Ciao, come stai?', '06.20', false],
@@ -73,10 +76,11 @@ $(document).ready(function () {
     const chat_history = $('#content-history')
     const chat_input = $('#chat-input')
     const search_input = $('#sidebar-input')
+    const contact_list = $('.contact-list')
 
     const template_mes = $('.template.message .mess-row')
 
-    var bot_timerId
+    //var bot_timerId
 
 
     // Loading previous messages
@@ -86,10 +90,8 @@ $(document).ready(function () {
     }
 
     // chat_input alwasy keeps focus, unless input is empty
-    chat_input.blur(forceFocus_on_ChatInput)
 
-
-    chat_input.focus(enabling_chatBtn)
+    chat_input.focus(enabling_chatBtn).blur(forceFocus_on_ChatInput)
 
     chat_input.blur(() => {
         chat_btn.children('i').removeClass('fa-paper-plane').addClass('fa-microphone')
@@ -102,6 +104,22 @@ $(document).ready(function () {
         }
     )) 
     
+
+
+    search_input.keyup(function() {
+        var string = search_input.val().trim().toLocaleLowerCase()
+        console.log(string)
+        if (string) {
+            var control = contacts.map(x => {
+                return x.toLocaleLowerCase().includes(string) ? -1 : contacts.indexOf(x)
+            }).filter(x => x != -1)
+        
+            for (item of control) {
+                console.log(item)
+                contact_list.children('[data-idContact="' + item + '"]').addClass('no-display')
+            }
+        } else contact_list.children().removeClass('no-display')
+    })
 });
 
 
