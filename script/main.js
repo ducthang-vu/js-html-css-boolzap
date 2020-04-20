@@ -109,15 +109,14 @@ $(document).ready(function () {
     search_input.keyup(function() {
         var string = search_input.val().trim().toLocaleLowerCase()
         console.log(string)
+
         if (string) {
             var control = contacts.map(x => {
                 return x.toLocaleLowerCase().includes(string) ? -1 : contacts.indexOf(x)
             }).filter(x => x != -1)
         
-            for (item of control) {
-                console.log(item)
-                contact_list.children('[data-idContact="' + item + '"]').addClass('no-display')
-            }
+            for (item of control) contact_list.children('[data-idContact="' + item + '"]').addClass('no-display')
+
         } else contact_list.children().removeClass('no-display')
     })
 });
