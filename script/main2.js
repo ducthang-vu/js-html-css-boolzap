@@ -151,7 +151,7 @@ function forceFocus_on_ChatInput() {
 }
 
 
-function switch_currentContact(n=0) {
+function switchContact(n=0) {
     currentContact = n
 
     contact_list.children().removeClass('active')
@@ -186,10 +186,10 @@ function hide_from_history(code) {
 /*********************/
 
 // ACTIVATING CONTACT SELECTION
-switch_currentContact()
+switchContact()
 
 contact_list.children().click(function() {
-    switch_currentContact($(this).attr('data-idContact'))
+    switchContact($(this).attr('data-idContact'))
 })
 
 
