@@ -85,13 +85,16 @@ var currentContact = 0 //on page load
 /************************/
 /****** FUNCTIONS *******/
 /************************/
-function add_history(text, time, bot=false) {
+function add_history(contact, text, time, bot=false) {
     var str_time = (time.getHours() + '.' + time.getMinutes()).replace(/\b([\d])\b/, '0$&')
-    contacts[currentContact][1].push([text, str_time, bot, false])
+    contacts[contact][1].push([text, str_time, bot, false])
 }
 
 
-function print_message(n=-1) {
+function print_message(contact, n=-1) {
+    //if user change contact after the function is called, printing is aborted
+    if (contact != currentContact) return -1 
+
     if (isNaN(n)) throw 'Parameter "' + n + '" is not a number.'
 
     var mess = template_mes.clone(true, true)
@@ -113,23 +116,23 @@ function print_message(n=-1) {
 }  
 
 
-function mess_by_bot() {
+function mess_by_bot(contact) {
     var content = bot_messages[Math.random() * bot_messages.length | 0]
 
-    add_history(content, new Date, true)
+    add_history(contact, content, new Date, true)
 
     //bot_timerId = setTimeout(() => print_Message()
-    setTimeout(() => print_message(), 1000)
+    setTimeout(() => print_message(contact), 1000)
 }
 
 
 function mess_send_by_User() {
     var new_content = chat_input.val().trim()
     if (new_content) {
-        add_history(new_content, new Date)
-        print_message()
+        add_history(currentContact, new_content, new Date)
+        print_message(currentContact)
         //clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
-        mess_by_bot()
+        mess_by_bot(currentContact)
     }
 
     chat_input.val('') 
@@ -160,7 +163,7 @@ function switchContact(n=0) {
 
     chat_history.html('')
     for (i = 0; i < (contacts[currentContact][1]).length; i++) {
-        print_message(i)
+        print_message(currentContact, i)
     }
 }
 
