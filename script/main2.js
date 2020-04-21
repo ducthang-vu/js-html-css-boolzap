@@ -140,20 +140,6 @@ function mess_by_bot(contact) {
 }
 
 
-function mess_send_by_User() {
-    var new_content = chat_input.val().trim()
-    if (new_content) {
-        add_history(currentContact, new_content, new Date)
-        print_message(currentContact)
-        //clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
-        mess_by_bot(currentContact)
-    }
-
-    chat_input.val('') 
-    chat_input.blur()
-}
-
-
 function enabling_chatBtn() {
     chat_btn.children('i').removeClass('fa-microphone').addClass('fa-paper-plane')
     chat_btn.click(mess_send_by_User)
@@ -164,6 +150,25 @@ function forceFocus_on_ChatInput() {
     if (chat_input.val().trim()) {
         setTimeout(() => {if (!search_input.is(':focus')) chat_input.focus()}, 5)           
     }
+}
+
+
+function resetChatInput() {
+    chat_input.val('') 
+    chat_input.blur()
+}
+
+
+function mess_send_by_User() {
+    var new_content = chat_input.val().trim()
+    if (new_content) {
+        add_history(currentContact, new_content, new Date)
+        print_message(currentContact)
+        //clearTimeout(bot_timerId)   //If user sends multiple messages within two seconds, the bot will answer only once.
+        mess_by_bot(currentContact)
+    }
+
+    resetChatInput() 
 }
 
 
@@ -180,6 +185,8 @@ function switchContact(n=0) {
     for (i = 0; i < (contacts[currentContact][1]).length; i++) {
         print_message(currentContact, i)
     }
+
+    resetChatInput()
 }
 
 
