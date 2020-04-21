@@ -4,52 +4,52 @@
 
 /* CONTACTS AND THEIR HISTORY () - would be better with classes and object! */
 var michele_history = [
-    ['Ciao, come stai?', '06.20', false],
-    ['Ciao, come stai?', '14.21', true],
-    ['Ciao, come stai?', '21.41', false],
+    ['Ciao, come stai?', '06.20', false, false],
+    ['Ciao, come stai?', '14.21', true, false],
+    ['Ciao, come stai?', '21.41', false, false],
 ]
 
 var fabio_history = [
-    ['Ciao, sono Fabio!', '06.20', true],
-    ['Ciao, ci sentiamo per le 2?', '12.51', false],
-    ['Ciao, facciamo per le 3', '15.31', true],
+    ['Ciao, sono Fabio!', '06.20', true, false],
+    ['Ciao, ci sentiamo per le 2?', '12.51', false, false],
+    ['Ciao, facciamo per le 3', '15.31', true, false],
 ]
 
 var samuele_history = [
-    ['Ciao, Samuele, come stai?', '04.10', false],
-    ['Ciao, come stai?', '14.24', true],
-    ['Bene, tu?', '20.31', false],
+    ['Ciao, Samuele, come stai?', '04.10', false, false],
+    ['Ciao, come stai?', '14.24', true, false],
+    ['Bene, tu?', '20.31', false, false],
 ]
 
 var alessandro_B_history = [
-    ['Ciao, sono Ale B, da quanto tempo?', '06.20', true],
-    ['Ciao, come stai?', '14.21', false],
-    ['Ti devo parlare', '21.41', true],
+    ['Ciao, sono Ale B, da quanto tempo?', '06.20', true, false],
+    ['Ciao, come stai?', '14.21', false, false],
+    ['Ti devo parlare', '21.41', true, false],
 ]
 
 var alessandro_L_history = [
-    ['Ciao, sono Ale L, perché non mi rispondi?', '06.20', true],
-    ['Ciao, ci sei?', '14.11', true],
-    ['Ciao, come stai?', '23.41', false],
+    ['Ciao, sono Ale L, perché non mi rispondi?', '06.20', true, false],
+    ['Ciao, ci sei?', '14.11', true, false],
+    ['Ciao, come stai?', '23.41', false, false],
 ]
 
 var claudia_history = [
-    ['Ciao, sono Claudia, questo è il mio nuovo numero!', '06.20', true],
-    ['Ciao, ok, salvato, come stai?', '16.34', false],
-    ['Ciao, bene, tu?', '21.41', true],
+    ['Ciao, sono Claudia, questo è il mio nuovo numero!', '06.20', true, false],
+    ['Ciao, ok, salvato, come stai?', '16.34', false, false],
+    ['Ciao, bene, tu?', '21.41', true, false],
 ]
 
 
 var davide_history = [
-    ['Ciao, sono Davide', '00.15', true],
-    ['Ciao, come stai?', '13.21', false],
-    ['Bene, tu?', '19.23', true],
+    ['Ciao, sono Davide', '00.15', true, false],
+    ['Ciao, come stai?', '13.21', false, false],
+    ['Bene, tu?', '19.23', true, false],
 ]
 
 var federico_history = [
-    ['Ciao Federico, mi puoi chiamare?', '10.10', false],
-    ['Ciao, ok, a che ora?', '11.21', true],
-    ['Ciao, stasera vero le 19.00', '11.41', false],
+    ['Ciao Federico, mi puoi chiamare?', '10.10', false, false],
+    ['Ciao, ok, a che ora?', '11.21', true, false],
+    ['Ciao, stasera vero le 19.00', '11.41', false, false],
 ]
 
 const contacts = [
@@ -71,6 +71,7 @@ const contact_header = $('#content-title')
 const chat_btn = $('#chat-btn')
 const chat_history = $('#content-history')
 const chat_input = $('#chat-input')
+const delete_button = $('.delete-button')
 const search_input = $('#sidebar-input')
 const contact_list = $('.contact-list')
 
@@ -85,7 +86,7 @@ var currentContact = 0 //on page load
 /************************/
 function add_history(text, time, bot=false) {
     var str_time = (time.getHours() + '.' + time.getMinutes()).replace(/\b([\d])\b/, '0$&')
-    contacts[currentContact][1].push([text, str_time, bot])
+    contacts[currentContact][1].push([text, str_time, bot, false])
 }
 
 
@@ -93,17 +94,22 @@ function print_message(n=-1) {
     // //
     if (isNaN(n)) throw 'Parameter "' + n + '" is not a number.'
 
-    var mess = template_mes.clone()
+    var mess = template_mes.clone(true, true)
+    
 
     var item_history = (contacts[currentContact][1]).slice(n)[0]
 
-    mess.find('.mess-content').text(item_history[0])
-    mess.find('.mess-time').text(item_history[1])
-    item_history[2] ? mess.addClass('received') : mess.addClass('user')
+    if (!item_history[3]) {
+        mess.attr('data-msg', (contacts[currentContact][1]).indexOf(item_history))
 
-    mess.appendTo(chat_history)
+        mess.find('.mess-content').text(item_history[0])
+        mess.find('.mess-time').text(item_history[1])
+        item_history[2] ? mess.addClass('received') : mess.addClass('user')
 
-    chat_history.animate({scrollTop: chat_history.prop("scrollHeight")}, 1000)
+        mess.appendTo(chat_history)
+
+        chat_history.animate({scrollTop: chat_history.prop("scrollHeight")}, 1000)
+    } else return -1 //The message is set as hidden, so it will not be printed  
 }  
 
 
@@ -170,6 +176,10 @@ function activate_searchInput() {
 }
 
 
+function hide_from_history(code) {
+    ((contacts[currentContact][1])[code])[3] = true
+}
+
 /*********************/
 /****** SCRIPT *******/
 /*********************/
@@ -198,3 +208,17 @@ $(document).keyup((function (e) {
 
 // ACTIVATING SEARCH INPUT
 search_input.on('input', activate_searchInput)
+
+
+// ACTIVATING MESS-MENU
+$('.mess-menu > button').click(function() {
+    $(this).parent().children('.options').show()
+})
+
+
+// USER ENABLED TO DELETE MESSAGES
+delete_button.click(function() {
+    var code = $(this).parents('li').attr('data-msg')
+    $(this).parents('li').remove() 
+    hide_from_history(code)
+})

@@ -67,6 +67,15 @@ li {
     text-align: right;
 }
 
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+
 /* APP */
 .app {
     width: 80%;
@@ -265,6 +274,10 @@ li {
                 word-break: break-all;
             }
 
+                .mess-content {
+                    margin-right: 20px;
+                }
+
             .mess-row.user .mess-container {
                 background: lightgreen;
             }
@@ -278,6 +291,40 @@ li {
                 font-weight: 100;
                 font-size: 70%;
             }
+
+            .mess-menu {
+                top: 7px;
+                right: -8px;
+                color: lightgray;
+                font-size: 90%;
+                z-index: 1;
+            }
+
+            .mess-container:hover .mess-menu {
+                display: block;
+                text-align: right;
+            }
+
+                .mess-menu button {
+                    margin-right: 20px;
+                }
+                
+                .mess-menu .options {
+                    padding: 5px 0;
+                    width: 140px;
+                    background: lightgrey;
+                    border-radius: 5px;
+                }
+
+                .mess-menu .options button {
+                    width: 100%;
+                    padding: 5px 10px;
+                    text-align: left;
+                }
+
+                .mess-menu .options button:hover {
+                    background: grey;
+                }
 
     .chat-menu {
         height: 60px;
