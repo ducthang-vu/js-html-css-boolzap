@@ -184,6 +184,13 @@ function hide_from_history(code) {
 /****** SCRIPT *******/
 /*********************/
 
+// USER ENABLED TO DELETE MESSAGES
+delete_button.click(function() {
+    var code = $(this).parents('li').attr('data-msg')
+    $(this).parents('li').remove() 
+    hide_from_history(code)
+})
+
 // ACTIVATING CONTACT SELECTION
 switchContact()
 
@@ -213,12 +220,4 @@ search_input.on('input', activate_searchInput)
 // ACTIVATING MESS-MENU
 $('.mess-menu > button').click(function() {
     $(this).parent().children('.options').show()
-})
-
-
-// USER ENABLED TO DELETE MESSAGES
-delete_button.click(function() {
-    var code = $(this).parents('li').attr('data-msg')
-    $(this).parents('li').remove() 
-    hide_from_history(code)
 })

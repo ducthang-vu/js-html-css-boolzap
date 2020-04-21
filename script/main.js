@@ -58,6 +58,7 @@ $(document).ready(function () {
     }
 
 
+    /*
     function activate_searchInput() {
         contact_list.children().show()
 
@@ -66,9 +67,19 @@ $(document).ready(function () {
                 contact_list.children('[data-idContact="' + index + '"]').hide()
             }
         }
-    }
+    }*/
 
     
+    function activate_searchInput() {
+        contact_list.children().show()
+    
+        contact_list.children().each(function() {
+            var name = $(this).find('.content-title h1').text()
+            if (!name.toLocaleLowerCase().includes(search_input.val().trim().toLocaleLowerCase())) $(this).hide()
+        })
+    }
+
+
     /***********/
     /* SCRIPT
     /***********/
@@ -76,6 +87,12 @@ $(document).ready(function () {
     const bot_messages = ['Ehi!', 'Come va?', 'Andiamo a bere?', 'Come stai?', 'Da quanto tempo!', 'Com\'è il tempo?', 'Hai visto la partita?', 'Hai sentito Caio?']
 
     const contacts = ['Michele', 'Fabio', 'Samuele', 'Alessandro B.', 'Alessandro L.', 'Claudia', 'Davide', 'Federico']
+
+    var michele_history = [
+        ['Ciao, come stai?', '06.20', false],
+        ['Ciao, come stai?', '14.21', true],
+        ['Ciao, come stai?', '21.41', false],
+    ]
 
     const chat_btn = $('#chat-btn')
     const chat_history = $('#content-history')
