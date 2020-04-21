@@ -15,7 +15,7 @@ $(document).ready(function () {
         mess.find('.mess-content').text(text)
         mess.find('.mess-time').text(time)
         mess.appendTo(chat_history)
-        chat_history.scrollTop(chat_history.prop('scrollHeight')) 
+        chat_history.animate({scrollTop: chat_history.prop("scrollHeight")}, 1000)
     }   
 
 
@@ -118,5 +118,3 @@ $(document).ready(function () {
 
     search_input.on('input', activate_searchInput)
 });
-
-
