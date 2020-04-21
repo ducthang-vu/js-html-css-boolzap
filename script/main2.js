@@ -246,3 +246,7 @@ search_input.on('input', activate_searchInput)
 $('.mess-menu > button').click(function() {
     $(this).parent().children('.options').toggle()
 })
+
+$('.mess-menu').mouseleave(function() {
+    $(this).children('.options').hide()
+})
