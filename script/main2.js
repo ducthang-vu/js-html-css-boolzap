@@ -1,3 +1,7 @@
+/******************************/
+/****** GLOBAL VARIABLE *******/
+/******************************/
+
 /* CONTACTS AND THEIR HISTORY () - would be better with classes and object! */
 var michele_history = [
     ['Ciao, come stai?', '06.20', false],
@@ -75,7 +79,10 @@ const template_mes = $('.template.message .mess-row')
 var currentContact = 0 //on page load
 
 
-// FUNCTIONS //
+
+/************************/
+/****** FUNCTIONS *******/
+/************************/
 function add_history(text, time, bot=false) {
     var str_time = (time.getHours() + '.' + time.getMinutes()).replace(/\b([\d])\b/, '0$&')
     contacts[currentContact][1].push([text, str_time, bot])
@@ -162,11 +169,20 @@ function activate_searchInput() {
     }
 }
 
+
 /*********************/
 /****** SCRIPT *******/
 /*********************/
 
-// ACTIVATING CHAT INTERATION
+// ACTIVATING CONTACT SELECTION
+switch_currentContact()
+
+contact_list.children().click(function() {
+    switch_currentContact($(this).attr('data-idContact'))
+})
+
+
+// ACTIVATING CHAT INTERACTION
 chat_input.focus(enabling_chatBtn).blur(forceFocus_on_ChatInput)
 
 chat_input.blur(() => {
@@ -178,14 +194,6 @@ $(document).keyup((function (e) {
     if (e.which == 13 || e.keyCode == 13) mess_send_by_User()
     }
 )) 
-
-
-// ACTIVATING CONTACT SELECTION
-switch_currentContact()
-
-contact_list.children().click(function() {
-    switch_currentContact($(this).attr('data-idContact'))
-})
 
 
 // ACTIVATING SEARCH INPUT
