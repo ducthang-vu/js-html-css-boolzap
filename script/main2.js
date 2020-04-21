@@ -100,7 +100,7 @@ function getLastTime(contactId) {
 
 
 function print_message(contact, n=-1) {
-    //if user change contact after the function is called, printing is aborted
+    //if user change contact after the function is executed, printing is aborted
     if (contact != currentContact) return -1 
 
     if (isNaN(n)) throw 'Parameter "' + n + '" is not a number.'
