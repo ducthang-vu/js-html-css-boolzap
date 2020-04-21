@@ -92,7 +92,6 @@ function add_history(text, time, bot=false) {
 
 
 function print_message(n=-1) {
-    // //
     if (isNaN(n)) throw 'Parameter "' + n + '" is not a number.'
 
     var mess = template_mes.clone(true, true)
