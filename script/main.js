@@ -77,12 +77,6 @@ $(document).ready(function () {
 
     const contacts = ['Michele', 'Fabio', 'Samuele', 'Alessandro B.', 'Alessandro L.', 'Claudia', 'Davide', 'Federico']
 
-    const michele_history = [
-        ['Ciao, come stai?', '06.20', false],
-        ['Ciao, come stai?', '14.21', true],
-        ['Ciao, come stai?', '21.41', false],
-    ]
-
     const chat_btn = $('#chat-btn')
     const chat_history = $('#content-history')
     const chat_input = $('#chat-input')

@@ -189,7 +189,7 @@ li {
             background: lightgrey
         }
 
-        .contact-button:not(:hover).active {
+        li.active .contact-button:not(:hover) {
             background: #eaebeb;
         }
 
