@@ -73,6 +73,7 @@ const chat_btn = $('#chat-btn')
 const chat_history = $('#content-history')
 const chat_input = $('#chat-input')
 const delete_button = $('.delete-button')
+const last_time_display = $('#last-time-display')
 const search_input = $('#sidebar-input')
 const contact_list = $('.contact-list')
 
@@ -88,6 +89,13 @@ var currentContact = 0 //on page load
 function add_history(contact, text, time, bot=false) {
     var str_time = (time.getHours() + '.' + time.getMinutes()).replace(/\b([\d])\b/, '0$&')
     contacts[contact][1].push([text, str_time, bot, false])
+}
+
+
+function getLastTime(contactId) {
+    // Getting a string containing the last time a message was sent by the contact
+    var received = (contacts[contactId][1]).filter(x => x[2] == true)
+    return (received.slice(-1)[0])[1]
 }
 
 
@@ -122,7 +130,13 @@ function mess_by_bot(contact) {
     add_history(contact, content, new Date, true)
 
     //bot_timerId = setTimeout(() => print_Message()
-    setTimeout(() => print_message(contact), 1000)
+    setTimeout(() => {
+            print_message(contact)
+            contact_item = contact_list.children('[data-idContact="' + contact + '"]')
+            contact_item.find('.right-btn').text(getLastTime(contact))
+            last_time_display.text(getLastTime(currentContact))
+        }
+        , 1000)
 }
 
 
@@ -160,6 +174,7 @@ function switchContact(n=0) {
     contact_list.children('[data-idContact="' + n + '"]').addClass('active')
 
     contact_header.children('h1').text((contacts[currentContact][0]))
+    last_time_display.text(getLastTime(currentContact))
 
     chat_history.html('')
     for (i = 0; i < (contacts[currentContact][1]).length; i++) {
