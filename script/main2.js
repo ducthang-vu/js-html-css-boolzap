@@ -1,8 +1,9 @@
 /******************************/
-/****** GLOBAL VARIABLE *******/
+/****** GLOBAL VARIABLES *******/
 /******************************/
 
 /* CONTACTS AND THEIR HISTORY () - would be better with classes and object! */
+// Each row contains: message (string), time (string), received (bool), hidden (bool)
 var michele_history = [
     ['Ciao, come stai?', '06.20', false, false],
     ['Ciao, come stai?', '14.21', true, false],
@@ -99,7 +100,7 @@ function print_message(n=-1) {
 
     var item_history = (contacts[currentContact][1]).slice(n)[0]
 
-    if (!item_history[3]) {
+    if (!item_history[3]) { // check if message is hidden
         mess.attr('data-msg', (contacts[currentContact][1]).indexOf(item_history))
 
         mess.find('.mess-content').text(item_history[0])
@@ -109,7 +110,7 @@ function print_message(n=-1) {
         mess.appendTo(chat_history)
 
         chat_history.animate({scrollTop: chat_history.prop("scrollHeight")}, 1000)
-    } else return -1 //The message is set as hidden, so it will not be printed  
+    } else return -1 
 }  
 
 
