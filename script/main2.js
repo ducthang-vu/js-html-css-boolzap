@@ -244,5 +244,5 @@ search_input.on('input', activate_searchInput)
 
 // ACTIVATING MESS-MENU
 $('.mess-menu > button').click(function() {
-    $(this).parent().children('.options').show()
+    $(this).parent().children('.options').toggle()
 })
